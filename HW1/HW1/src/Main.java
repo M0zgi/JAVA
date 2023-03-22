@@ -1,4 +1,6 @@
+
 import java.util.Scanner;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -75,5 +77,48 @@ public class Main {
             }
 
         }
+
+        /*
+            Задание 4
+            Пользователь вводит шестизначное число. Необходимо
+            поменять в этом числе первую и шестую цифры, а также
+            вторую и пятую цифры.
+            Например, 723895 должно превратиться в 593827.
+            Если пользователь ввел не шестизначное число число требуется вывести сообщение об ошибке.
+         */
+
+        {
+            try{
+                System.out.println("Enter 6 digit number Task4: ");
+                String number = inputNumScanner.nextLine();
+
+                int a = 1, b = 6, c = 2, d = 5;
+
+                if (number.length() > 6) {
+
+                    System.out.println("Error! You enter more then 6 digit ");
+                }
+                else {
+                    number = String.copyValueOf(swap(number, a - 1, b - 1));
+                    number = String.copyValueOf(swap(number, c - 1, d - 1));
+                    System.out.println("Result number = " +  number);
+                }
+            }
+
+            catch (ArrayIndexOutOfBoundsException ex){
+                System.out.println("Input number error");
+                System.out.println(ex.getMessage());
+            }
+        }
+    }
+
+    //Task4
+    static char[] swap(String str, int a, int b)
+    {
+        char[] ch = str.toCharArray();
+        char temp = ch[a];
+        ch[a] = ch[b];
+        ch[b] = temp;
+        return ch;
     }
 }
