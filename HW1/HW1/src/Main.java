@@ -204,7 +204,7 @@ public class Main {
                     numberTwo = temp;
                 }
                 String result = "";
-                result = OddNumbers(result, numberOne, numberTwo);
+                result = oddNumbers(result, numberOne, numberTwo);
                 System.out.println(result);
             }
             }
@@ -226,7 +226,7 @@ public class Main {
     }
 
     //Task7
-    static String OddNumbers(String result, int numberOne, int numberTwo)
+    static String oddNumbers(String result, int numberOne, int numberTwo)
     {
         StringBuilder resultBuilder = new StringBuilder(result);
         do{
