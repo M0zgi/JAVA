@@ -225,20 +225,17 @@ public class Main {
         return ch;
     }
 
+    //Task7
     static String OddNumbers(String result, int numberOne, int numberTwo)
     {
         StringBuilder resultBuilder = new StringBuilder(result);
         do{
             if (numberOne % 2 != 0)
-            {
                 resultBuilder.append(numberOne).append(" ");
-                numberOne++;
-            }
-            else
-                numberOne++;
+            numberOne++;
 
         }while(numberOne < numberTwo);
-        result = resultBuilder.toString();
-        return result;
+
+        return resultBuilder.toString();
     }
 }
