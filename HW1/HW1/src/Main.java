@@ -1,4 +1,5 @@
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -135,6 +136,48 @@ public class Main {
                 case "9", "10", "11" -> System.out.println("Autumn");
                 default -> System.out.println("Error number of month:" + month);
             }
+
+        }
+
+        /*
+            Задание 6
+            Пользователь вводит с клавиатуры количество метров.
+            В зависимости от выбора пользователя программа
+            переводит метры в мили, дюймы или ярды.
+         */
+
+        {
+            try{
+                System.out.println("Enter meter (Task6): ");
+                float value = inputNumScanner.nextFloat();
+                System.out.println("Enter in which system to convert the entered value in miles (1), inches (2) or yards (3):");
+                int systemConvert = inputNumScanner.nextInt();
+                float result;
+                float miles = 1609;
+                float inches = 39.37f;
+                float yards = 1.094f;
+
+
+                    switch (systemConvert) {
+                        case 1 -> {
+                            result = value / miles;
+                            System.out.println(value + "m = " + result + " miles");
+                        }
+                        case 2 -> {
+                            result = value * inches;
+                            System.out.println(value + "m = " + result + " inches");
+                        }
+                        case 3 -> {
+                            result = value * yards;
+                            System.out.println(value + "m = " + result + " yards");
+                        }
+                        default -> System.out.println("Error value!");
+                    }
+            }
+            catch (InputMismatchException ex){
+            System.out.println("Input error");
+            System.out.println(ex.getMessage());
+        }
 
         }
     }
