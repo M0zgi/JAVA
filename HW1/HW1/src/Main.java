@@ -37,7 +37,7 @@ public class Main {
 
             try {
 
-                System.out.println("Enter number Task2: ");
+                System.out.println("Enter number (Task2): ");
                 number = Float.parseFloat(inputNumScanner.nextLine());
 
                 System.out.println("Enter %: ");
@@ -65,7 +65,7 @@ public class Main {
 
         {
             try{
-                System.out.println("Enter number Task3: ");
+                System.out.println("Enter number (Task3): ");
                 String number = inputNumScanner.nextLine();
                 int result = Integer.parseInt(number);
                 System.out.println("Result number = " + result);
@@ -89,7 +89,7 @@ public class Main {
 
         {
             try{
-                System.out.println("Enter 6 digit number Task4: ");
+                System.out.println("Enter 6 digit number (Task4): ");
                 String number = inputNumScanner.nextLine();
 
                 int a = 1, b = 6, c = 2, d = 5;
@@ -109,6 +109,33 @@ public class Main {
                 System.out.println("Input number error");
                 System.out.println(ex.getMessage());
             }
+        }
+
+        /*
+            Задание 5
+            Пользователь вводит с клавиатуры номер месяца (от
+            1 до 12). В зависимости от полученного номера месяца
+            программа выводит на экран надпись: Winter (если введено
+            значение 1,2 или 12), Spring (если введено значение от 3
+            до 5), Summer (если введено значение от 6 до 8), Autumn
+            (если введено значение от 9 до 11).
+            Если пользователь ввел значение не в диапазоне от 1
+            до 12 требуется вывести сообщение об ошибке.
+         */
+
+        {
+            System.out.println("Enter number of month (Task5): ");
+
+            String month = inputNumScanner.nextLine();
+
+            switch (month) {
+                case "1", "2", "12" -> System.out.println("Winter");
+                case "3", "4", "5" -> System.out.println("Spring");
+                case "6", "7", "8" -> System.out.println("Summer");
+                case "9", "10", "11" -> System.out.println("Autumn");
+                default -> System.out.println("Error number of month:" + month);
+            }
+
         }
     }
 
