@@ -1,4 +1,5 @@
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -213,10 +214,52 @@ public class Main {
             System.out.println(ex.getMessage());
             }
         }
+
+        /*  Задание 9
+            В одномерном массиве, заполненном случайными
+            числами, определить минимальный и максимальный
+            элементы, посчитать количество отрицательных элементов,
+            посчитать количество положительных элементов,
+            посчитать количество нулей. Результаты вывести на экран.
+
+            Задание 12
+            Напишите метод, сортирующий массив по убыванию
+            или возрастанию в зависимости от выбора пользователя.
+
+        */
+
+        {
+
+            int[] array = new int[12];
+            for (int i = 0; i < array.length; i++) {
+                array[i] = (int) Math.round((Math.random() * 30) - 15);
+                System.out.print(array[i] + " ");
+            }
+
+            int minNumber = array[0];
+
+            minNumber = minSearch(array, minNumber);
+
+            int maxNumber = array[0];
+            maxNumber = maxSearch(array, maxNumber);
+
+            System.out.println(" ");
+            System.out.println("minNumber:" + minNumber+ " maxNumber:" + maxNumber);
+
+            int negative = negativeSearch(array);
+            System.out.println("Negative count in array:" + negative);
+            int positive = positiveSearch(array);
+            System.out.println("Positive count in array:" + positive);
+
+            quickSort(array, 0, array.length -1);
+
+            Arrays.stream(array).mapToObj(j -> j + " ").forEachOrdered(System.out::print);
+
+        }
     }
 
     //Task4
-    static char[] swap(String str, int a, int b)
+    private static char[] swap(String str, int a, int b)
     {
         char[] ch = str.toCharArray();
         char temp = ch[a];
@@ -226,7 +269,7 @@ public class Main {
     }
 
     //Task7
-    static String oddNumbers(String result, int numberOne, int numberTwo)
+    private static String oddNumbers(String result, int numberOne, int numberTwo)
     {
         StringBuilder resultBuilder = new StringBuilder(result);
         do{
@@ -237,5 +280,63 @@ public class Main {
         }while(numberOne < numberTwo);
 
         return resultBuilder.toString();
+    }
+
+    private static void quickSort(int[] arr, int begin, int end) {
+        if (begin < end) {
+            int partitionIndex = partition(arr, begin, end);
+
+            quickSort(arr, begin, partitionIndex-1);
+            quickSort(arr, partitionIndex+1, end);
+        }
+    }
+
+    private static int partition(int[] arr, int begin, int end) {
+        int pivot = arr[end];
+        int i = (begin-1);
+
+        for (int j = begin; j < end; j++) {
+            if (arr[j] <= pivot) {
+                i++;
+
+                int swapTemp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = swapTemp;
+            }
+        }
+
+        int swapTemp = arr[i+1];
+        arr[i+1] = arr[end];
+        arr[end] = swapTemp;
+
+        return i+1;
+    }
+
+    private static int minSearch(int[] array, int minNumber)
+    {
+        for (int j : array) {
+            if (minNumber > j)
+                minNumber = j;
+        }
+        return minNumber;
+    }
+
+    private static int maxSearch(int[] array, int maxNumber)
+    {
+        for (int j : array) {
+            if (maxNumber < j)
+                maxNumber = j;
+        }
+        return maxNumber;
+    }
+
+    private static int negativeSearch(int[] array)
+    {
+        return (int) Arrays.stream(array).filter(num -> num < 0).count();
+    }
+
+    private static int positiveSearch(int[] array)
+    {
+        return (int) Arrays.stream(array).filter(num -> num > 0).count();
     }
 }
