@@ -251,7 +251,7 @@ public class Main {
             int positive = positiveSearch(array);
             System.out.println("Positive count in array:" + positive);
 
-            quickSort(array, 0, array.length -1);
+            quickSort(array, 0, array.length - 1);
 
             Arrays.stream(array).mapToObj(j -> j + " ").forEachOrdered(System.out::print);
 
